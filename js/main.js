@@ -2,7 +2,6 @@
 // noparens
 // 07.30.12
 
-//var convert, cross, dedupe, noparens, parse, permute, split, test, verify;
 
 toNumber = function(numArray) {
 
@@ -154,102 +153,7 @@ removeDuplicates = function(arr) {
 
 }
 
-preformOperation = function(num1, num2, op) {
-
-	var outputNumber;
-	
-	switch(op) {
-	case "+":
-		outputNumber = num1 + num2;
-	  	break;
-	case "-":
-	  	outputNumber = num1 - num2;
-	  	break;
-	case "*":
-	  	outputNumber = num1 * num2;
-	  	break;
-	case "/":
-		if (num2 === 0) {
-			outputNumber = 0;
-		} else {
-			outputNumber = num1 / num2;
-		}
-	  	outputNumber = num1 * num2;
-	  	break;
-	default:
-	  	outputNumber = 0;
-	}
-	
-	//console.log(outputNumber);
-	return outputNumber;
-
-
-}
-
-polishMath = function(numArray, opArray) {
-	
-	var mathArray = [];
-	
-	var opValue = 0;
-	var j = 0;
-
-	for ( var i = 0; i < numArray.length; i++ ) { 
-		mathArray.push(numArray[i])
-		if (mathArray.length === 2 ) {
-			opValue = preformOperation(mathArray[0], mathArray[1], opArray[j]);
-			mathArray = [];
-			j++;
-			mathArray.push[opValue];
-
-		}
-	}
-
-	console.log("total: " + opValue);
-	return opValue;
-
-}
-
-permutate = function(numArray, opArray) {
-
-	var answerArray = [];
-
-}
-
 noParens = function(expression) {
-	
-	if (!expression) {
-		return "undefined"
-	}
-
-	var numberRegex = /\s\W\s/;
-	var numberMatches = expression.split( numberRegex );
-
-	var operatorRegex = /[0-9]+\s|\s[0-9]+\s|\s[0-9]+/
-	var operatorMatches = expression.split( operatorRegex );
-
-	operatorMatches.splice(0,1);
-	operatorMatches.splice(operatorMatches.length-1,1);
-	
-
-	numberMatches = toNumber(numberMatches);
-
-	if (numberMatches.length === 1) {
-		return numberMatches;
-	} else if(numberMatches.length === 2) {
-		var arrayReturn = [];
-		arrayReturn[0] = polishMath(numberMatches, operatorMatches);
-		return arrayReturn;
-
-	}
-
-
-	console.log(numberMatches);
-	console.log(operatorMatches);
-
-
-}
-
-noParensSecond = function(expression) {
 	
 	if (!expression) {
 		return "undefined"
@@ -265,24 +169,17 @@ noParensSecond = function(expression) {
 }
 
 
-
+// TESTS
 var numberString01 = "1 + 2 - 3 * 4";
-var numberString02 = "13 - 1";
+var numberString02 = "1 - 1 + 1";
+var numberString03 = "1 + 2 + 3 * 4 - 5 * 2";
 
 
+noParens(numberString01);
+noParens(numberString02);
+noParens(numberString03);
 
-//console.log(noParens( numberString02 ));
-noParensSecond( numberString01 );
 
-// preformOperation(1, 2, "+");
-// preformOperation(1, 2, "-");
-// preformOperation(1, 2, "*");
-// preformOperation(1, 2, "/");
-// preformOperation(1, 0, "/");
-// toNumber("1");
-// toNumber("134");
-// toNumber(".134");
-// toNumber("134.3");
 
 
 
